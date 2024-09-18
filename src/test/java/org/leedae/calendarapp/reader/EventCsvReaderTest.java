@@ -35,7 +35,7 @@ class EventCsvReaderTest {
         String path = "";
 
         List<String[]> mockData = new ArrayList<>();
-        mockData.add(new String[85]);
+        mockData.add(new String[8]);
 
         int mockSize = 5;
         for(int i = 0; i<mockSize; i++){

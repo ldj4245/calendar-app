@@ -19,26 +19,25 @@ public class CalendarAppApplication {
 
         EventCsvReader csvReader = new EventCsvReader(new RawCsvReader());
         String meetingCsvPath = "/data/meeting.csv";
+        String noDisturbanceCsvPath = "/data/no_disturbance.csv";
+        String outOfOfficeCsvPath = "/data/out_of_office.csv";
+        String todoCsvPath = "/data/to_do.csv";
+
 
         List<Meeting> meetings = csvReader.readMeetings(meetingCsvPath);
         meetings.forEach(schedule::add);
 
-        meetings.get(0).validateAndUpdate(
-                new UpdateMeeting(
-                        "new title",
-                        ZonedDateTime.now(),
-                        ZonedDateTime.now().plusHours(1),
-                        null,
-                        "A",
-                        "new agenda"
+        List<NoDisturbance> noDisturbances = csvReader.readNoDisturbance(noDisturbanceCsvPath);
+        noDisturbances.forEach(schedule::add);
 
+        List<OutOfOffice> outOfOffices = csvReader.readOutOfOffice(outOfOfficeCsvPath);
+        outOfOffices.forEach(schedule::add);
 
-                )
-        );
-
-
+        List<Todo> todos = csvReader.readTodo(todoCsvPath);
+        todos.forEach(schedule::add);
 
         schedule.printAll();
+
 
     }
 
