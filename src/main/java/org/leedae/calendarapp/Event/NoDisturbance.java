@@ -1,5 +1,7 @@
 package org.leedae.calendarapp.Event;
 
+import org.leedae.calendarapp.Event.update.AbstractAuditableEvent;
+
 import java.time.ZonedDateTime;
 
 public class NoDisturbance extends AbstractEvent {
@@ -7,6 +9,11 @@ public class NoDisturbance extends AbstractEvent {
                          ZonedDateTime startAt, ZonedDateTime endAt){
 
         super(id,title,startAt,endAt);
+
+    }
+
+    @Override
+    protected void update(AbstractAuditableEvent update) {
 
     }
 
