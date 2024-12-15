@@ -1,6 +1,7 @@
 package org.leedae.calendarapp;
 
 import org.leedae.calendarapp.Event.*;
+import org.leedae.calendarapp.Event.update.CommonUpdatedto;
 import org.leedae.calendarapp.Event.update.UpdateMeeting;
 import org.leedae.calendarapp.reader.EventCsvReader;
 import org.leedae.calendarapp.reader.RawCsvReader;
@@ -27,8 +28,15 @@ public class CalendarAppApplication {
         List<Meeting> meetings = csvReader.readMeetings(meetingCsvPath);
         meetings.forEach(schedule::add);
 
+
         List<NoDisturbance> noDisturbances = csvReader.readNoDisturbance(noDisturbanceCsvPath);
         noDisturbances.forEach(schedule::add);
+
+        noDisturbances.get(0).validateAndUpdate(
+                new CommonUpdatedto("수정해봤스",ZonedDateTime.now(),ZonedDateTime.now().plusHours(2))
+        );
+
+
 
         List<OutOfOffice> outOfOffices = csvReader.readOutOfOffice(outOfOfficeCsvPath);
         outOfOffices.forEach(schedule::add);

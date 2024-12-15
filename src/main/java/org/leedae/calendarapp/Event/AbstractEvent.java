@@ -1,23 +1,24 @@
 package org.leedae.calendarapp.Event;
 
 import org.leedae.calendarapp.Event.update.AbstractAuditableEvent;
+import org.leedae.calendarapp.Event.update.CommonUpdatedto;
 import org.leedae.calendarapp.exception.InvalidEventException;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
 
 public  abstract class AbstractEvent implements Event {
-    private final int id;
-    private String title;
+    protected final int id;
+    protected String title;
 
-    private ZonedDateTime startAt;
-    private ZonedDateTime endAt;
-    private Duration duration;
+    protected ZonedDateTime startAt;
+    protected ZonedDateTime endAt;
+    protected Duration duration;
 
-    private final ZonedDateTime createdAt;
-    private ZonedDateTime modifiedAt;
+    protected final ZonedDateTime createdAt;
+    protected ZonedDateTime modifiedAt;
 
-    private boolean deletedYn;
+    protected boolean deletedYn;
 
     protected AbstractEvent(int id, String title,
                             ZonedDateTime startAt, ZonedDateTime endAt
